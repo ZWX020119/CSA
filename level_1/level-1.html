@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登陆界面</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .basic {
+            background-color: #ffffff;
+            width: 536px;
+            height: 425px;
+            margin: 20px auto;
+            padding-left: 24px;
+            border: 1px solid #cecece;
+            padding-right: 40px;
+        }
+
+        .head {
+            position: relative;
+            height: 271px;
+            width: 100%;
+        }
+
+        .foot {
+            position: relative;
+            height: 154px;
+            width: 100%;
+        }
+
+        .nav1 {
+            position: absolute;
+            top: 40px;
+            font-size: 16px;
+            color: #02baed;
+        }
+
+        .nav2 {
+            position: absolute;
+            top: 40px;
+            left: 92px;
+            font-size: 16px;
+        }
+
+        .key {
+            display: block;
+            position: absolute;
+            margin-top: 86px;
+            height: 49px;
+            width: 516px;
+            border: 1px solid #dfdfdf;
+            border-radius: 5px;
+            text-indent: 14px;
+            color: #cecece;
+            font-size: 16px;
+        }
+
+        .input_two {
+            margin-top: 175px
+        }
+
+        .input_three {
+            float: left;
+            margin-top: 5px;
+            width: 16px;
+            height: 16px;
+        }
+
+        .word {
+            float: left;
+            display: inline;
+            color: #555555;
+            font-size: 14px;
+            margin-top: 3px;
+            height: 22px;
+        }
+
+        .ad {
+            color: #bbbbbb;
+            margin-left: 16px;
+            height: 22px;
+        }
+
+        .search {
+            float: right;
+            display: inline;
+            color: #00a1d6;
+            font-size: 14px;
+            margin-top: 3px;
+            text-decoration: none;
+        }
+
+        button {
+            position: absolute;
+            left: 0;
+            height: 47px;
+            width: 231px;
+            top: 33px;
+            border: 1px solid black;
+        }
+
+        .sub1 {
+            background-color: #00a7de;
+            border-radius: 5px;
+        }
+
+        .enter {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        .sub2 {
+            position: absolute;
+            left: 305px;
+            background-color: #ffffff;
+            border-radius: 5px;
+        }
+
+        .build {
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+
+        .foot_under {
+            position: absolute;
+            top: 95px;
+            width: 100%;
+            height: 30px;
+        }
+
+        img {
+            float: left;
+            height: 27px;
+            width: 27px;
+        }
+
+        .other {
+            float: left;
+            font-size: 14px;
+            color: #717171;
+            margin-right: 35px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='basic'>
+        <div class='head'>
+            <div class='nav1'>密码登录</div>
+            <div class='nav2'>短信登陆</div>
+            <input class='key' type="text" placeholder='你的手机号/邮箱'>
+            <input class='key input_two' type="password" placeholder=' 密码'>
+        </div>
+        <div class='foot'>
+            <input class='input_three' type="checkbox">
+            <div class='word'>记住我</div>
+            <div class='word ad'>不是自己的电脑不要勾选此选项</div>
+            <a class='search' href="#">无法验证？忘记密码？</a>
+            <button class='sub1'><a class='enter' href="#">登录</a></button>
+            <button class='sub2'><a class='build' href="#">注册</a></button>
+            <div class='foot_under'>
+                <img src="微博.png">
+                <div class='other'>微博账号登陆</div>
+                <img src="qq.png">
+                <div class='other'>QQ账号登陆</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
