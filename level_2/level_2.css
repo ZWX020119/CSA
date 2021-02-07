@@ -20,7 +20,16 @@
             margin-top: 5px;
         }
 
-        .head ul,
+        .head ul {
+            display:flex;
+            float: right;
+            margin-right: 24px;
+            height: 50px;
+            line-height: 50px;
+            color: white;
+            font-size: 14px;
+        }
+        
         .head li {
             float: right;
             margin-right: 24px;
@@ -29,29 +38,36 @@
             color: white;
             font-size: 14px;
         }
+        
 
         .head .li_4 {
             color: #9c9a9b;
         }
         .basic_1 {
+            display: flex;
             margin-top: 20px;
             margin-left: 50px;
             height: 730px;
+            justify-content: space-between ;
+
         }
         .basic_2 {
+            display: flex;
             margin-top: 60px;
             margin-left: 50px;
             height: 650px;
         }
         .basic_3 {
+            display: flex;
             margin-top: 60px;
             margin-left: 50px;
             height: 300px;
         }
         .basic_4 {
+            display: flex;
             margin-top: 70px;
             margin-left: 50px;
-            height: 500px;
+            height: 500px;      
         }
         .page_1 {
             float: left;
@@ -261,7 +277,7 @@
         }
         .footer {
             margin-top: 0.2%;
-            height: 6px;
+            height: 60px;
             color:white;
             line-height: 60px;
             font-size: 16px;
