@@ -38,9 +38,12 @@
             color: white;
             font-size: 14px;
         }
+        .head li a {
+            color: white;
+        }
         
 
-        .head .li_4 {
+        .head .li_4 a {
             color: #9c9a9b;
         }
         .basic_1 {
