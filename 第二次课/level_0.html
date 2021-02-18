@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var str = 'today is a happy day';
+        function change() {
+            //以空格为间隔分割 放入数组
+            var array = str.split(' ');
+            for (var i = 0; i < array.length; i++) {
+                // array[i].substring(0, 1)  取左不取右  第一个字符
+                // array[i].substring(1)  取第一个以后的所有字符
+                //首字母变大写
+                array[i] = array[i].substring(0, 1).toUpperCase() + array[i].substring(1);
+            }
+            //以空格为间隔将字符串合并
+            return array.join(' ');
+        }
+        str = change(str);
+        console.log(str);
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
