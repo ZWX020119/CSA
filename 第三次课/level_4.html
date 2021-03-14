@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 深拷贝递归
+        function deepClone(obj) {
+            let objClone = Array.isArray(obj) ? [] : {};  //判断类型
+            if (obj && typeof obj === "object") {
+                for (key in obj) {
+                    if (obj.hasOwnProperty(key)) {
+                        if (obj[key] && typeof obj[key] === "object") {      //判断ojb子元素是否为对象，如果是，递归复制
+                            objClone[key] = deepClone(obj[key]);
+                        } else {
+                            objClone[key] = obj[key];                         //如果不是，简单复制
+                        }
+                    }
+                }
+            }
+            return objClone;
+        }
+        let a = [1, { name: 'tom' }, 4];
+        b = deepClone(a);
+        a[0] = 2;       //改变a 不影响 b
+        console.log(a, b); // 其中a[0] = 2  b[0] = 1  
+
+        //非递归
+        var c = JSON.stringify(a);
+        var b = JSON.parse(c);
+        b.push(4);
+        console.log(b);
+        console.log(a)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //继承 1
+        function Animal() {
+            this.species = "动物";
+        }
+        function Cat(name, color) {
+            this.name = name;
+            this.color = color;
+        }
+        Cat.prototype = new Animal();
+        var cat1 = new Cat("大毛", "黄色");
+        console.log(cat1.species);
+        //继承 2
+        function Animal() {
+            this.species = "动物";
+        }
+        function Cat(name, color) {
+            this.name = name;
+            this.color = color;
+            Animal.call(this);
+        }
+        var cat2 = new Cat("大毛", "黄色");
+        console.log(cat2.species);
+    </script>
+</body>
+
+</html>
