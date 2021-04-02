@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .head {
+            margin-top: 30px;
+        }
+
+        input {
+            margin-left: 25%;
+            display: inline;
+            float: left;
+            margin-right: 30px;
+            height: 25px;
+        }
+
+        button {
+            height: 30px;
+            float: left;
+            list-style: none;
+            background-color: orange;
+            margin-left: 10px;
+            border-radius: 3px;
+            padding: 5px;
+        }
+
+        li {
+            float: left;
+            width: 30px;
+            margin-right: 5px;
+            list-style: none;
+        }
+
+        .pg {
+            /* margin-top: 35px; */
+            position: absolute;
+            top: 80px;
+            left: 24%;
+            background-color: rgb(112, 194, 231);
+            width: 715px;
+            height: 500px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            let arr = [];
+            let lis = document.querySelectorAll('li');
+            for (i = 0; i < 20; i++) {
+                lis[i].style.backgroundColor = 'pink'
+                lis[i].style.height = '0';
+            }
+            let btn = document.querySelectorAll('button');
+            btn[6].addEventListener('click', function () {      //随机生成
+                arr = [];
+                for (let i = 0; i < 20; i++) {
+                    arr.push(Math.round(Math.random() * 400));
+                }
+                for (let i = 0; i < 20; i++) {
+                    lis[i].style.height = arr[i] + 'px';
+                }
+                console.log(arr);
+            })
+            let input = document.querySelector('input');
+            btn[0].addEventListener('click', function () {//左侧入
+                for (let i = 19; i > 0; i--) {
+                    arr[i] = arr[i - 1];
+                }
+                arr[0] = input.value * 3;
+                console.log(arr);
+                for (let i = 0; i < 20; i++) {
+                    lis[i].style.height = arr[i] + 'px';
+                }
+                input.value = '';
+            })
+            btn[1].addEventListener('click', function () {//右侧入
+                for (let i = 0; i < 19; i++) {
+                    arr[i] = arr[i + 1];
+                }
+                arr[19] = input.value * 3;
+                console.log(arr);
+                for (let i = 0; i < 20; i++) {
+                    if (arr[i] == 0) {
+                        lis[i].style.height = 0;
+                    }
+                    else {
+                        lis[i].style.height = arr[i] + 'px';
+                    }
+                }
+                input.value = '';
+            })
+            btn[2].addEventListener('click', function () {//左侧出
+                for (let i = 0; i < 19; i++) {
+                    arr[i] = arr[i + 1];
+                }
+                arr[19] = 0;
+                console.log(arr);
+                for (let i = 0; i < 20; i++) {
+                    if (arr[i] == 0) {
+                        lis[i].style.height = 0;
+                    }
+                    else {
+                        lis[i].style.height = arr[i] + 'px';
+                    }
+                }
+            })
+            btn[3].addEventListener('click', function () {//右侧出
+                for (let i = 19; i > 0; i--) {
+                    arr[i] = arr[i - 1];
+                }
+                arr[0] = 0;
+                console.log(arr);
+                for (let i = 0; i < 20; i++) {
+                    if (arr[i] == 0) {
+                        lis[i].style.height = 0;
+                    }
+                    else {
+                        lis[i].style.height = arr[i] + 'px';
+                    }
+                }
+            })
+            btn[4].addEventListener('click', function () {//重新排序
+                let min, j;
+                for (let i = 0; i < 19; i++) {
+                    min = i;
+                    for (j = i + 1; j <= 19; j++) {
+                        if (arr[min] > arr[j]) {
+                            min = j;
+                        }
+                    }
+                    let temp;
+                    temp = arr[i];
+                    arr[i] = arr[min];
+                    arr[min] = temp;
+                    for (let i = 0; i < 20; i++) {
+                        lis[i].style.height = arr[i] + 'px';
+                    }
+                }
+                console.log(arr);
+            })
+
+            btn[5].addEventListener('click', function () {//清空
+                arr = [];
+                for (let i = 0; i < 20; i++) {
+                    lis[i].style.height = '0';
+                }
+            })
+
+        }
+    </script>
+</head>
+
+<body>
+    <div class="head">
+        <input type="text">
+        <ul>
+            <button>左侧入</button>
+            <button>右侧入</button>
+            <button>左侧出</button>
+            <button>右侧出</button>
+            <button>重新排序</button>
+            <button>清空</button>
+            <button>随机生成</button>
+        </ul>
+    </div>
+    <div class="pg">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+
+</html>
