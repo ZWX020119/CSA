@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" placeholder="所需获取数据量1~20">
+    <button>展示数据</button>
+    <ul>
+    </ul>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        let ajax = function get_data() {
+            let ipt = document.querySelector('input');
+            //实例化XMLHttpRequest对象
+            const xhr = new XMLHttpRequest();
+            let ul = document.querySelector('ul');
+            //初始化一个get请求
+            xhr.open("get", "http://musicapi.leanapp.cn/personalized", true)
+            //接收返回值
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                        const res = JSON.parse(xhr.responseText);
+                        console.log(res);
+                        let k = parseInt(ipt.value);  //获取输入的数据需求量
+                        for (i = 0; i < k; i++) {         //加入到展示板上
+                            let li = document.createElement('li');
+                            li.innerHTML = "id=" + res.result[i].id + "&nbsp&nbsp&nbsp系列" + res.result[i].name + "&nbsp&nbsp&nbsp点击量" + res.result[i].playcount;
+                            ul.insertBefore(li, ul.children[0]);
+
+                        }
+                    } else {
+                        console.log("请求失败")
+                    }
+                }
+            }
+            xhr.send()
+        }
+        $("button").click(() => {
+            ajax();
+        })
+
+
+        //发送请求
+        // let ul = document.querySelector('ul');
+        // let ipt = document.querySelector('input');
+        // let ajax = function get_data() {
+        //     $.ajax({
+        //         type: "get",
+        //         url: "http://musicapi.leanapp.cn/personalized",
+        //         dataType: 'json', // 设置返回值类型
+        //         contentType: 'application/json', // 设置参数类型
+        //         headers: { 'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8" },// 设置请求头
+        //         xhrFields: { withCredentials: true }, // 跨域携带cookie
+        //         data: JSON.stringify({ a: [{ b: 1, a: 1 }] }), // 传递参数
+        //         error: function (xhr, status) {  // 错误处理
+        //             console.log(xhr, status);
+        //         },
+        //         success: function (data, status) {  // 获取结果
+        //             console.log(data);
+        //             let k = parseInt(ipt.value);  //获取输入的数据需求量
+        //             for (i = 0; i < k; i++) {         //加入到展示板上
+        //                 let li = document.createElement('li');
+        //                 li.innerHTML = "id=" + data.result[i].id + "&nbsp&nbsp&nbsp系列" + data.result[i].name + "&nbsp&nbsp&nbsp点击量" + data.result[i].playcount;
+        //                 ul.insertBefore(li, ul.children[0]);
+        //             }
+
+        //         }
+        //     })
+
+        // }
+    </script>
+</body>
+
+</html>

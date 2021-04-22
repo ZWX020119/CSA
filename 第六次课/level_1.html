@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 160px;
+            height: 125px;
+            margin-bottom: 0;
+        }
+
+        div {
+            position: absolute;
+
+            top: 2px;
+            right: 2px;
+            color: white;
+            font-size: 10px;
+        }
+
+        ul {
+            margin-top: 5%;
+            margin-left: 18%;
+            /* display: flex; */
+            width: 1000px;
+            /* height: 400px; */
+            background-color: blue;
+            justify-content: space-between;
+        }
+
+        li {
+            position: relative;
+            float: left;
+            /* height: 50px; */
+            /* display: block; */
+            margin-bottom: 20px;
+            width: 160px;
+            height: 180px;
+            margin-right: 30px;
+            list-style: none;
+            /* background-color: burlywood; */
+        }
+
+        p {
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <!-- <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li> -->
+    </ul>
+    <script>
+        //实例化XMLHttpRequest对象
+        const xhr = new XMLHttpRequest();
+        let ul_1 = document.querySelector('ul');
+        //初始化一个get请求
+        xhr.open("get", "http://musicapi.leanapp.cn/personalized", true)
+        //接收返回值
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+                if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                    const res = JSON.parse(xhr.responseText);
+                    for (let i = 10; i < 20; i++) {               //取第10到20个歌单系列
+                        let img = document.createElement('img');
+                        let li = document.createElement('li');
+                        let p = document.createElement('p');
+                        let div = document.createElement('div');
+                        ul_1.insertBefore(li, ul_1.children[0]);
+                        img.src = res.result[i].picUrl;
+                        p.innerText = res.result[i].name;
+                        div.innerHTML = "点击量" + parseInt(res.result[i].playCount / 10000) + "万";
+                        li.append(img);
+                        li.append(div);
+                        li.append(p);
+                    }
+                    console.log(res.result[1]);
+
+                } else {
+                    console.log("请求失败")
+                }
+            }
+        }
+        //发送请求
+        xhr.send()
+    </script>
+</body>
+
+</html>

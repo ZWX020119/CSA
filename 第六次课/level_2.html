@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" placeholder="所需获取数据量1~20">
+    <button>展示数据</button>
+    <ul>
+    </ul>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- 通过 百度CDN 引用jQuery  -->
+    <script>
+        let ul = document.querySelector('ul');
+        let ipt = document.querySelector('input');
+        function ajax(options) {
+            var xhr = null;
+            //创建对象
+            if (window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest()
+            } else {
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            // 连接
+            if (options.type == "GET") {
+                xhr.open(options.type, options.url + "?" + params, options.async);
+                xhr.send(null)
+            } else if (options.type == "POST") {
+                xhr.open(options.type, options.url, options.async);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send();
+            }
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    options.success(JSON.parse(xhr.responseText));
+                }
+            }
+            function formsParams(data) {
+                var arr = [];
+                for (var prop in data) {
+                    arr.push(prop + "=" + data[prop]);
+                }
+                return arr.join("&");
+            }
+
+        }
+
+        $("button").click(() => {
+            ajax({
+                url: "http://musicapi.leanapp.cn/personalized",  // url---->地址
+                type: "POST",   // type ---> 请求方式
+                async: true,   // async----> 同步：false，异步：true 
+                success: function (data) {   //返回接受信息
+                    console.log(data);
+                    let k = parseInt(ipt.value);  //获取输入的数据需求量
+                    for (i = 0; i < k; i++) {         //加入到展示板上
+                        let li = document.createElement('li');
+                        li.innerHTML = "id=" + data.result[i].id + "&nbsp&nbsp&nbsp系列" + data.result[i].name + "&nbsp&nbsp&nbsp点击量" + data.result[i].playCount;
+                        ul.insertBefore(li, ul.children[0]);
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
