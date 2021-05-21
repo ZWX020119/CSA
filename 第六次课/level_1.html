@@ -53,43 +53,19 @@
 
 <body>
     <ul>
-        <!-- <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li> -->
     </ul>
     <script>
         //实例化XMLHttpRequest对象
         const xhr = new XMLHttpRequest();
         let ul_1 = document.querySelector('ul');
         //初始化一个get请求
-        xhr.open("get", "http://musicapi.leanapp.cn/personalized", true)
+        xhr.open("get", "https://www.tianqiapi.com/free/day?appid=88638596&appsecret=qL7mw4JP", true)
         //接收返回值
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4) {
                 if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
                     const res = JSON.parse(xhr.responseText);
-                    for (let i = 10; i < 20; i++) {               //取第10到20个歌单系列
-                        let img = document.createElement('img');
-                        let li = document.createElement('li');
-                        let p = document.createElement('p');
-                        let div = document.createElement('div');
-                        ul_1.insertBefore(li, ul_1.children[0]);
-                        img.src = res.result[i].picUrl;
-                        p.innerText = res.result[i].name;
-                        div.innerHTML = "点击量" + parseInt(res.result[i].playCount / 10000) + "万";
-                        li.append(img);
-                        li.append(div);
-                        li.append(p);
-                    }
-                    console.log(res.result[1]);
-
+                    console.log(res);
                 } else {
                     console.log("请求失败")
                 }
