@@ -1,7 +1,11 @@
-本次考核没有使用别的地方写好的框架，由heml+css+js完成，项
-目中使用到阿里iconfont对天气图标进行设计。
+本次考核没有使用别的地方写好的框架，由html+css+js完成，项
+目中使用到阿里iconfont对天气图标进行设计，使用到ps工具，和echarts.js画图。
 实验总共调用四个接口
-分别是：实时天气接口，七日天气接口，24小时天气接口，七天天气接口
+分别是：
+实时天气接口：https://v0.yiketianqi.com/api?version=v61&appid=88638596&appsecret=qL7mw4JP
+七日天气接口：https://v0.yiketianqi.com/api/worldchina?appid=88638596&appsecret=qL7mw4JP
+24小时天气接口：https://v0.yiketianqi.com/api?version=v9&appid=88638596&appsecret=qL7mw4JP
+生活指数接口：https://www.tianqiapi.com/life/lifepro?appid=88638596&appsecret=qL7mw4JP
 总体分为两个主要页面：主页面 和  搜索页面
 一丶主页面：分为顶部实时天气板块，今明两天天气板块，逐小时天气板块，七天天气板块，以及生活指数板块
 1.顶部实时天气板块:最顶端中央部分显示地区，同时设置点击事件，实现与搜索界面交互的功能。左侧小板块显示空气质量，
